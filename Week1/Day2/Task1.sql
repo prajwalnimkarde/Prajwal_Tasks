@@ -26,3 +26,46 @@ values
 (10,"Ashley","Taylor","ashley.taylor@company.com", 58000, "Sales"),
 (11,"William","Brown","william.brown@company.com", 78000, "Marketing"),
 (12,"Sophia","Davis","sophia.davis@company.com", 62000, "HR");
+
+-- Top 3 employees with highest salary --
+select FirstName, LastName, Salary 
+from Employees 
+order by Salary desc 
+limit 3; 
+
+-- Top 3 employees with the lowest salary
+select FirstName, LastName, Salary 
+from Employees 
+order by Salary asc 
+limit 3;
+
+-- employee with the 2nd highest salary --
+select FirstName, LastName, Salary 
+from Employees 
+order by Salary desc 
+limit 1,1;
+
+-- employee with the 2nd lowest salary --
+select FirstName, LastName, Salary 
+from Employees 
+order by Salary asc 
+limit 1,1;
+
+-- employee with the 3rd highest salary --
+select FirstName, LastName, Salary 
+from Employees 
+order by Salary desc 
+limit 2,1;
+
+-- employee with the 3rd lowest salary --
+select FirstName, LastName, Salary 
+from Employees 
+order by Salary asc 
+limit 2,1;
+
+-- Employees with salary between 65000 and 80000 -- 
+select FirstName, LastName, Email, Salary 
+from Employees 
+where Salary>65000 and Salary<80000
+order by FirstName desc
+limit 3;
