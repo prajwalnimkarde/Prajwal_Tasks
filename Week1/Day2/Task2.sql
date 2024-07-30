@@ -2,10 +2,6 @@ create database tasks;
 use tasks;
 drop database tasks;
 
-drop table Employees;
-drop table Projects;
-drop table Departments;
-
 
 -- Employees Table --
 create table Employees(
