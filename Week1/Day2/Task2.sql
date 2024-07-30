@@ -1,16 +1,22 @@
 create database tasks;
 use tasks;
+drop database tasks;
+
+drop table Employees;
+drop table Projects;
+drop table Departments;
+
 
 -- Employees Table --
 create table Employees(
 	EmployeeId int primary key,
     FirstName varchar(50) not null,
     LastName varchar(50) not null,
-    Email varchar(100) not null unique,
-    Salary int not null check(salary > 0),
-    DepartmentId int,
-    foreign key(DepartmentId) references Departments(DepartmentId)
+    Email varchar(100) not null,
+    Salary int not null,
+    DepartmentId int
 );
+
 
 insert into Employees 
 (EmployeeId, FirstName, LastName, Email, Salary, DepartmentId)
@@ -25,9 +31,10 @@ values
 
 -- Departments Table --
 create table Departments(
-	DepartmentId int primary key,
+	DepartmentId int,
     DepartmentName varchar(50) not null
 );
+
 
 insert into Departments
 (DepartmentId, DepartmentName)
@@ -43,8 +50,7 @@ values
 create table Projects(
 	ProjectId int primary key,
     ProjectName varchar(100) not null,
-    DepartmentId int,
-    foreign key(DepartmentId) references Departments(DepartmentId)
+    DepartmentId int
 );
 
 
@@ -59,6 +65,35 @@ values
 
 
 /* ====== Practice Questions ===== */
+-- 1st question --
+alter table Employees add constraint check(salary > 0);
+
+
+-- 2nd question --
+alter table Employees
+add constraint
+foreign key (DepartmentId) 
+references Departments(DepartmentId);
+
+
+-- 3rd question --
+alter table Employees
+add constraint
+unique(Email);
+
+
+-- 4th question --
+alter table Departments
+add constraint 
+primary key(DepartmentId);
+
+
+-- 5th question --
+alter table Projects
+add constraint
+foreign key(DepartmentId) references Departments(DepartmentId);
+
+
 -- 6th question --
 insert into Employees 
 values
